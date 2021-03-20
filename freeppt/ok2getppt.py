@@ -26,9 +26,8 @@ def parser():
 	url = 'https://www.freeppt7.com/'
 	url_3d = 'https://www.freeppt7.com/3D/'
 	categories = []
-	# start_url = 'https://www.freeppt7.com/uploads/soft/210312/Color-vector-3D-business-PowerPoint-templates.pptx'
 	wait = WebDriverWait(driver, 10)
-	driver.get(url_3d)
+	driver.get(url)
 	driver.implicitly_wait(10)
 	driver.refresh()
 	# sleep(5)
@@ -36,6 +35,7 @@ def parser():
 	seletor = etree.HTML(html_str)
 	categories_url = seletor.xpath('//*[@id="menu-primarynavigationmenu"]/li/ul/li/a/@href')
 	categories = seletor.xpath('//*[@id="menu-primarynavigationmenu"]/li/ul/li/a/text()')
+
 	# get all 'a' links to the list
 	a_link = seletor.xpath('//*[@id="content"]/div/article/div/a/@href')
 	# get all ppt titles to the list
@@ -69,6 +69,7 @@ def get_data(a_link, b_title, img_url, p_content):
 		options = webdriver.ChromeOptions()
 		ppt_path = r'E:\Python\WorkSpace\PycharmProjects\freeppt\freeppt'+os.path.sep+img_path
 		print("current ppt_path: %s" % ppt_path)
+
 		prefs = {'profile.default_content_settings.popups': 0, 'download.default_directory': ppt_path}
 		options.add_experimental_option('prefs', prefs)
 		driver = webdriver.Chrome(options=options)
