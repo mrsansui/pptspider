@@ -96,6 +96,13 @@ def get_image(b_title, img_url, p_content):
 		else:
 			print('Already Downloaded', content_file_path)
 
+def get_ppt(a_link):
+	for i in range(len(a_link)):
+
+	pass
+
+
+
 def main():
 	b_title = parser()[1]
 	img_url = parser()[2]
