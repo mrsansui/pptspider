@@ -25,6 +25,7 @@ driver = webdriver.Chrome(options=options)
 def parser():
 	url = 'https://www.freeppt7.com/'
 	url_3d = 'https://www.freeppt7.com/3D/'
+	categories = []
 	# start_url = 'https://www.freeppt7.com/uploads/soft/210312/Color-vector-3D-business-PowerPoint-templates.pptx'
 	wait = WebDriverWait(driver, 10)
 	driver.get(url_3d)
@@ -33,16 +34,14 @@ def parser():
 	# sleep(5)
 	html_str = driver.page_source.encode('GBK', 'ignore')
 	seletor = etree.HTML(html_str)
-	print(seletor)
+	categories_url = seletor.xpath('//*[@id="menu-primarynavigationmenu"]/li/ul/li/a/@href')
+	categories = seletor.xpath('//*[@id="menu-primarynavigationmenu"]/li/ul/li/a/text()')
 	# get all 'a' links to the list
 	a_link = seletor.xpath('//*[@id="content"]/div/article/div/a/@href')
-
 	# get all ppt titles to the list
 	b_title = seletor.xpath('//*[@id="content"]/div/article/div/h2/a/b/text()')
-
 	# get all images url to the list
 	img_url = seletor.xpath('//*[@id="content"]/div/article/div/a/img/@src')
-
 	# get all 'p' contents
 	p_content = seletor.xpath('//*[@id="content"]/div/article/div/p/text()')
 
