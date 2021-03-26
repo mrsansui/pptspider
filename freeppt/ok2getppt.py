@@ -72,13 +72,6 @@ def parser():
 	# get all 'p' contents
 	p_content = seletor.xpath('//*[@id="content"]/div/article/div/p/text()')
 
-	# for i in range(len(a_link)):
-	# 	print( b_title[i],'----->', a_link[i])
-	# 	print(img_url[i])
-	# 	# driver.get(img_url[i])
-	# 	# sleep(5)
-	# 	driver.get()
-
 	return a_link, b_title, img_url, p_content
 	driver.quit()
 def get_data(a_link, b_title, img_url, p_content):
