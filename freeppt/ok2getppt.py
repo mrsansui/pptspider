@@ -17,7 +17,7 @@ import sys
 
 options = webdriver.ChromeOptions()
 options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"')
-# chrome_options.add_argument('--headless')
+# options.add_argument('--headless')
 headers = {
 	'User-Agent':"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
 }
@@ -55,7 +55,7 @@ def parser():
 	}
 	categories = []
 	wait = WebDriverWait(driver, 10)
-	driver.get(Chinese_wind[2])
+	driver.get(Chinese_wind[3], headers=headers)
 	driver.implicitly_wait(10)
 	driver.refresh()
 	# sleep(5)
