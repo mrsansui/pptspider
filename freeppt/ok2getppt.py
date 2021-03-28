@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from ppt_page import *
 import json
 import requests
 from selenium import webdriver
@@ -22,40 +23,11 @@ headers = {
 	'User-Agent':"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
 }
 driver = webdriver.Chrome(options=options)
-
+requests.DEFAULT_RETRIES = 5
 def parser():
 	url = 'https://www.freeppt7.com/'
-	url_3d = [
-		'https://www.freeppt7.com/3D/list_12_1.html',
-		'https://www.freeppt7.com/3D/list_12_2.html',
-		'https://www.freeppt7.com/3D/list_12_3.html',
-		'https://www.freeppt7.com/3D/list_12_4.html'
-
-	]
-	url_pink = ['https://www.freeppt7.com/pink/list_43_1.html',
-				'https://www.freeppt7.com/pink/list_43_2.html'
-				]
-
-	url_animal = ['https://www.freeppt7.com/animal/']
-	Chinese_wind = [
-		'https://www.freeppt7.com/Chinese-wind/list_22_1.html',
-		'https://www.freeppt7.com/Chinese-wind/list_22_2.html',
-		'https://www.freeppt7.com/Chinese-wind/list_22_3.html',
-		'https://www.freeppt7.com/Chinese-wind/list_22_4.html',
-		'https://www.freeppt7.com/Chinese-wind/list_22_5.html',
-		'https://www.freeppt7.com/Chinese-wind/list_22_6.html',
-		'https://www.freeppt7.com/Chinese-wind/list_22_7.html',
-		'https://www.freeppt7.com/Chinese-wind/list_22_8.html',
-		'https://www.freeppt7.com/Chinese-wind/list_22_9.html'
-	]
-	categories = {
-		'1':'3D',
-		'2':'Animal',
-		'3':'Abstract'
-	}
-	categories = []
 	wait = WebDriverWait(driver, 10)
-	driver.get(Chinese_wind[3], headers=headers)
+	driver.get(Chinese_wind[8])
 	driver.implicitly_wait(10)
 	driver.refresh()
 	# sleep(5)
@@ -100,6 +72,7 @@ def get_data(a_link, b_title, img_url, p_content):
 
 		content_name = b_title[i]+'.txt'
 		# print("current image name: %s " % img_name)
+
 		img_obj = requests.get(img_url[i], headers=headers)
 		sleep(1)
 
@@ -174,7 +147,7 @@ def get_data(a_link, b_title, img_url, p_content):
 			print('Already Downloaded', ppt_file_path)
 		sleep(5)
 		# driver.get(ppt_download_url)
-
+	driver.quit()
 def main():
 	a_link = parser()[0]
 	b_title = parser()[1]
