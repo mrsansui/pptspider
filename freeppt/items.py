@@ -17,3 +17,5 @@ class FreepptItem(scrapy.Item):
     img_url = scrapy.Field()
     # get all 'p' contents
     p_content = scrapy.Field()
+    # all categories urls
+    categories_url = scrapy.Field()
